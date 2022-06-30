@@ -2,6 +2,7 @@ package com.techelevator.application;
 
 import com.techelevator.UI.UserInput;
 import com.techelevator.UI.UserOutput;
+import com.techelevator.model.FeedMoney;
 import com.techelevator.model.Inventory;
 
 public class VendingMachineApplication {
@@ -43,8 +44,14 @@ public class VendingMachineApplication {
         while(true) {
 
             String userChoice = UserInput.getPurchaseOption();
+            boolean isPurchasing;
 
             if(userChoice.equalsIgnoreCase("money")) {
+
+                isPurchasing = false;
+                FeedMoney.setMoneyAvailable(UserInput.getFeedMoney(), isPurchasing);
+                UserOutput.displayMoneyAvailable(FeedMoney.getMoneyAvailable());
+
             } else if(userChoice.equalsIgnoreCase("select")) {
             } else if(userChoice.equalsIgnoreCase("finish")) {
             } else {

@@ -78,7 +78,7 @@ public class UserInput {
     public static BigDecimal getFeedMoney() {
 
         System.out.println();
-        System.out.println("How much money do you wanna feed the machine with?");
+        System.out.print("How much money do you wanna feed the machine with? ");
         BigDecimal selectedOption = new BigDecimal(scanner.nextLine());
         System.out.println();
 
