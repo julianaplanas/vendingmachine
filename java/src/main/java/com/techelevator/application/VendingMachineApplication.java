@@ -22,7 +22,10 @@ public class VendingMachineApplication {
 
             } else if(userChoice.equalsIgnoreCase("purchase")) {
                 // todo: logic to display purchase options
-                showPurchaseMenu();
+                boolean isFinish = showPurchaseMenu();
+                if (isFinish) {
+                    break;
+                }
 
             } else if(userChoice.equalsIgnoreCase("exit")) {
                 // break out of the loop and end the application
@@ -40,7 +43,7 @@ public class VendingMachineApplication {
         UserOutput.displayInventory(inventory);
     }
 
-    public void showPurchaseMenu() {
+    public boolean showPurchaseMenu() {
         while(true) {
 
             String userChoice = UserInput.getPurchaseOption();
@@ -54,6 +57,10 @@ public class VendingMachineApplication {
 
             } else if(userChoice.equalsIgnoreCase("select")) {
             } else if(userChoice.equalsIgnoreCase("finish")) {
+
+                UserOutput.displayFinishedTransaction(FeedMoney.getChange());
+                return true;
+
             } else {
                 UserOutput.displayMessage("You selected an invalid option");
             }

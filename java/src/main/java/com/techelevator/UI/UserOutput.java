@@ -26,4 +26,13 @@ public class UserOutput {
         System.out.println("Current money provided: " + price);
         System.out.println();
     }
+
+
+    public static void displayFinishedTransaction(String change)
+    {
+        System.out.println();
+        System.out.println("Thanks for your purchase!");
+        System.out.println(change);
+        System.out.println();
+    }
 }

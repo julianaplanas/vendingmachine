@@ -17,8 +17,8 @@ public class FeedMoney {
         return moneyAvailable;
     }
 
-    public String getChange() {
-        return "Your change is " + moneyAvailable + " and you'll receive " + coinChange();
+    public static String getChange() {
+        return "Your change is $" + moneyAvailable + " and you'll receive: \n" + coinChange();
     }
 
     // setMoneyAvailable(): adds money when it's introduced to the machine, or subtract money when something is bought
@@ -30,7 +30,7 @@ public class FeedMoney {
         }
     }
 
-    public String coinChange() {
+    public static String coinChange() {
         double changeMoney = moneyAvailable.doubleValue();
         int quarterCoin = 0;
         int dimeCoin = 0;
@@ -48,7 +48,11 @@ public class FeedMoney {
             changeMoney -= NICKEL;
             nickelCoin++;
         }
-        return quarterCoin + " quarters + " + dimeCoin + " dimes + " + nickelCoin + " nickles";
+
+        String message1 = quarterCoin > 0 ? quarterCoin + " quarter(s) " : "";
+        String message2 = dimeCoin > 0 ? dimeCoin + " dime(s) " : "";
+        String message3 = nickelCoin > 0 ? nickelCoin + " nickle(s) " : "";
+        return message1 + "\n" + message2 + "\n" + message3;
     }
 
 
