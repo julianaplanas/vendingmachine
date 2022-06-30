@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Inventory {
 
-    private List<Product> products = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
 
     public Inventory() {
         loadInventory();
@@ -20,7 +20,7 @@ public class Inventory {
         return products;
     }
 
-    public Product getProductByCode(String productCode) {
+    public static Product getProductByCode(String productCode) {
         Product product = null;
         for (Product p : products) {
             if(p.getCode().equals(productCode)) {

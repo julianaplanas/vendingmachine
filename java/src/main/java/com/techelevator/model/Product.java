@@ -42,10 +42,10 @@ public class Product {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        this.quantity -= quantity;
     }
 
-    private String quantityCheck() {
+    protected String quantityCheck() {
         if (quantity == 0) {
             return " - SOLD OUT";
         }
@@ -56,7 +56,9 @@ public class Product {
     @Override
     public String toString()
     {
-        return code + " - " + name + " - $" + price + quantityCheck();
+        String line = String.format("%-5s %-25s $ %-7.2f %-15s", code, name, price, quantityCheck());
+        return line;
+        // return code + " - " + name + " - $" + price + quantityCheck();
     }
 
 

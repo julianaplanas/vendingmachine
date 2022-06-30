@@ -4,6 +4,7 @@ import com.techelevator.UI.UserInput;
 import com.techelevator.UI.UserOutput;
 import com.techelevator.model.FeedMoney;
 import com.techelevator.model.Inventory;
+import com.techelevator.model.Purchase;
 
 public class VendingMachineApplication {
 
@@ -56,6 +57,9 @@ public class VendingMachineApplication {
                 UserOutput.displayMoneyAvailable(FeedMoney.getMoneyAvailable());
 
             } else if(userChoice.equalsIgnoreCase("select")) {
+
+                Purchase.checkCodeExistence(UserInput.getProductCode());
+
             } else if(userChoice.equalsIgnoreCase("finish")) {
 
                 UserOutput.displayFinishedTransaction(FeedMoney.getChange());
