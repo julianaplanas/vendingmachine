@@ -10,4 +10,11 @@ public class UserOutput {
             System.out.println(product.toString());
         }
     }
+
+    public static void displayMessage(String message)
+    {
+        System.out.println();
+        System.out.println(message);
+        System.out.println();
+    }
 }

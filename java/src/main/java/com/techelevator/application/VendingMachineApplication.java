@@ -21,9 +21,15 @@ public class VendingMachineApplication {
 
             } else if(userChoice.equalsIgnoreCase("purchase")) {
                 // todo: logic to display purchase options
+                showPurchaseMenu();
+
             } else if(userChoice.equalsIgnoreCase("exit")) {
                 // break out of the loop and end the application
+
+                UserOutput.displayMessage("Thank you :) Come back soon!");
                 break;
+            } else {
+                UserOutput.displayMessage("You selected an invalid option");
             }
         }
     }
@@ -31,6 +37,20 @@ public class VendingMachineApplication {
 
     public void showInventory() {
         UserOutput.displayInventory(inventory);
+    }
+
+    public void showPurchaseMenu() {
+        while(true) {
+
+            String userChoice = UserInput.getPurchaseOption();
+
+            if(userChoice.equalsIgnoreCase("money")) {
+            } else if(userChoice.equalsIgnoreCase("select")) {
+            } else if(userChoice.equalsIgnoreCase("finish")) {
+            } else {
+                UserOutput.displayMessage("You selected an invalid option");
+            }
+        }
     }
 
 
