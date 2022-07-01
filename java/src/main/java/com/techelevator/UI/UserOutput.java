@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 
 public class UserOutput {
 
+    private static final int MAX_QUANTITY = 5;
+
     public static void clearScreen() {
         final String ANSI_CLS = "\u001b[2J";
         final String ANSI_HOME = "\u001b[H";
@@ -90,9 +92,13 @@ public class UserOutput {
         BigDecimal totalSpent = new BigDecimal(0);
 
         for(Product product : salesReport.getNewReport()) {
-            int quantity = 5 - product.getQuantity();
+            // Set quantity to the max quantity (5) - the quantity left of that product
+            int quantity = MAX_QUANTITY - product.getQuantity();
+
             String line = String.format("%-15s %-5s", product.getName(), quantity);
             System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + line + ColorCodes.RESET);
+
+            // Add price * amount of products bought to the total spent
             totalSpent = totalSpent.add(product.getPrice().multiply(BigDecimal.valueOf(quantity)));
         }
         System.out.println();

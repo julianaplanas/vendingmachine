@@ -12,6 +12,7 @@ public class VendingMachineApplication {
     public void run() {
 
         while(true) {
+            // Display main menu options
             String userChoice = UserInput.getHomeScreenOption();
 
             if(userChoice.equalsIgnoreCase("display")) {
@@ -27,7 +28,7 @@ public class VendingMachineApplication {
                 UserOutput.displaySalesReport(salesReport);
 
             } else if(userChoice.equalsIgnoreCase("exit")) {
-                // break out of the loop and end the application
+                // Create sales report in file
                 SalesReport.reportSalesWriting();
                 UserOutput.displayMessage("Thank you :) Come back soon!");
                 break;
@@ -45,22 +46,24 @@ public class VendingMachineApplication {
 
     public void showPurchaseMenu() {
         while(true) {
-
+            // Display Purchable menu options
             String userChoice = UserInput.getPurchaseOption();
             boolean isPurchasing;
 
             if(userChoice.equalsIgnoreCase("money")) {
 
+                // Adding feeded money
                 isPurchasing = false;
                 FeedMoney.setMoneyAvailable(UserInput.getFeedMoney(), isPurchasing);
+                // Display message with new money available
                 UserOutput.displayMoneyAvailable(FeedMoney.getMoneyAvailable());
 
             } else if(userChoice.equalsIgnoreCase("select")) {
-
+                // Select product code and check if exist
                 Purchase.checkCodeExistence(UserInput.getProductCode());
 
             } else if(userChoice.equalsIgnoreCase("finish")) {
-
+                // Break out of purchase menu loop and display change message
                 UserOutput.displayFinishedTransaction(FeedMoney.getChange());
                 break;
 

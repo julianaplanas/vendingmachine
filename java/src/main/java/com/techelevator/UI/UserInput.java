@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class UserInput {
     private static Inventory inventory = new Inventory();
-
     private static Scanner scanner = new Scanner(System.in);
 
     public static String getHomeScreenOption() {

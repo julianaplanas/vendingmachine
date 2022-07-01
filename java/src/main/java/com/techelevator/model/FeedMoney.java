@@ -17,16 +17,20 @@ public class FeedMoney {
     }
 
     public static String getChange() {
+        // Generate message in audit when change is returned
         Audit.auditEntries("GIVE CHANGE:", getMoneyAvailable(), BigDecimal.valueOf(0.00));
+        // Return message with given change
         return "Your change is $" + moneyAvailable + " and you'll receive: \n" + coinChange();
     }
 
-    // setMoneyAvailable(): adds money when it's introduced to the machine, or subtract money when something is bought
+
     public static void setMoneyAvailable(BigDecimal amount, boolean isPurchasing) {
+        // Adds money when it's introduced to the machine, or subtract money when something is bought
         if (isPurchasing) {
             moneyAvailable = moneyAvailable.subtract(amount);
         } else {
             moneyAvailable = moneyAvailable.add(amount);
+            // Generate message in audit when money is charged in the machine
             Audit.auditEntries("FEED MONEY:", getMoneyAvailable().subtract(amount), getMoneyAvailable());
         }
     }
@@ -36,7 +40,7 @@ public class FeedMoney {
         int dimeCoin = 0;
         int nickelCoin = 0;
 
-
+        // Transform money available in amount of coins
         while (moneyAvailable.compareTo(QUARTER) >= 0) {
             moneyAvailable = moneyAvailable.subtract(QUARTER);
             quarterCoin++;

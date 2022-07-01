@@ -42,10 +42,12 @@ public class Product {
     }
 
     public void setQuantity(int quantity) {
+        // Subtract 1 to the quantity of products
         this.quantity -= quantity;
     }
 
     protected String quantityCheck() {
+        // Check if quantity is 0 then add SOLD OUT to the display of inventory
         if (quantity == 0) {
             return " - SOLD OUT";
         }

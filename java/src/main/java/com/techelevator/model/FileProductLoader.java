@@ -17,20 +17,24 @@ public class FileProductLoader {
         List<Product> products = new ArrayList<>();
 
         try(Scanner reader = new Scanner(file)) {
-
+            // Read file
             while(reader.hasNextLine()) {
                 String line = reader.nextLine();
 
+                // Split in columns
                 String[] columns = line.split("\\|");
 
+                // Set variables of information
                 String code = columns[0];
                 String name = columns[1];
                 BigDecimal price = new BigDecimal(columns[2]);
                 String category = columns[3];
                 int quantity = 5;
 
+                // Create new Product
                 Product product = new Product(code, name, price, category, quantity);
 
+                // Add product to the list
                 products.add(product);
 
             }
@@ -38,7 +42,7 @@ public class FileProductLoader {
         } catch (FileNotFoundException e) {
 
         }
-
+        // Return list of products
         return products;
 
     }

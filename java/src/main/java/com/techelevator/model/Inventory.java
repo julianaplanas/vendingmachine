@@ -12,6 +12,7 @@ public class Inventory {
     }
 
     protected static void loadInventory() {
+        // Create List of products
         FileProductLoader loader = new FileProductLoader();
         products = loader.getProducts();
     }
@@ -23,7 +24,9 @@ public class Inventory {
     public static Product getProductByCode(String productCode) {
         Product product = null;
         for (Product p : products) {
+            // Check if a products code matches the given code
             if(p.getCode().equals(productCode)) {
+                // Return the matching product
                 product = p;
                 break;
             }
