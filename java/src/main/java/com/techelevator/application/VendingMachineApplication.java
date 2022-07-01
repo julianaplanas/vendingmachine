@@ -20,11 +20,7 @@ public class VendingMachineApplication {
 
             } else if(userChoice.equalsIgnoreCase("purchase")) {
 
-                boolean isFinish = showPurchaseMenu();
-                if (isFinish) {
-                    SalesReport.reportSalesWriting();
-                    break;
-                }
+                showPurchaseMenu();
 
             } else if(userChoice.equalsIgnoreCase("report")) {
 
@@ -32,6 +28,7 @@ public class VendingMachineApplication {
 
             } else if(userChoice.equalsIgnoreCase("exit")) {
                 // break out of the loop and end the application
+                SalesReport.reportSalesWriting();
                 UserOutput.displayMessage("Thank you :) Come back soon!");
                 break;
 
@@ -46,7 +43,7 @@ public class VendingMachineApplication {
         UserOutput.displayInventory(inventory);
     }
 
-    public boolean showPurchaseMenu() {
+    public void showPurchaseMenu() {
         while(true) {
 
             String userChoice = UserInput.getPurchaseOption();
@@ -65,7 +62,7 @@ public class VendingMachineApplication {
             } else if(userChoice.equalsIgnoreCase("finish")) {
 
                 UserOutput.displayFinishedTransaction(FeedMoney.getChange());
-                return true;
+                break;
 
             }
             else {

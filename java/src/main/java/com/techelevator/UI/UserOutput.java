@@ -80,7 +80,7 @@ public class UserOutput {
         System.out.println(message);
         System.out.println();
 
-        UserInput.getHomeScreenOption();
+        //UserInput.getHomeScreenOption();
     }
 
     public static void displaySalesReport(SalesReport salesReport) {
@@ -91,8 +91,9 @@ public class UserOutput {
 
         for(Product product : salesReport.getNewReport()) {
             int quantity = 5 - product.getQuantity();
-            String line = String.format("%-15s %-5f", product.getName(), quantity);
+            String line = String.format("%-15s %-5s", product.getName(), quantity);
             System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + line + ColorCodes.RESET);
+            totalSpent = totalSpent.add(product.getPrice().multiply(BigDecimal.valueOf(quantity)));
         }
         System.out.println();
         System.out.println("TOTAL SALES: $" + totalSpent);
