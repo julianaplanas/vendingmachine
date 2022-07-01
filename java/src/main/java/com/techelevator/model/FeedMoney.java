@@ -8,9 +8,9 @@ public class FeedMoney {
 
     private static BigDecimal moneyAvailable = BigDecimal.ZERO;
     private static BigDecimal change;
-    private static final double QUARTER = 0.25;
-    private static final double DIME = 0.10;
-    private static final double NICKEL = 0.05;
+    private static final BigDecimal QUARTER = new BigDecimal("0.25");
+    private static final BigDecimal DIME = new BigDecimal("0.10");
+    private static final BigDecimal NICKEL = new BigDecimal("0.05");
 
 
     public static BigDecimal getMoneyAvailable() {
@@ -31,21 +31,21 @@ public class FeedMoney {
     }
 
     public static String coinChange() {
-        double changeMoney = moneyAvailable.doubleValue();
         int quarterCoin = 0;
         int dimeCoin = 0;
         int nickelCoin = 0;
 
-        while (changeMoney >= QUARTER) {
-            changeMoney -= QUARTER;
+
+        while (moneyAvailable.compareTo(QUARTER) >= 0) {
+            moneyAvailable = moneyAvailable.subtract(QUARTER);
             quarterCoin++;
         }
-        while (changeMoney >= DIME) {
-            changeMoney -= DIME;
+        while (moneyAvailable.compareTo(DIME) >= 0) {
+            moneyAvailable = moneyAvailable.subtract(DIME);
             dimeCoin++;
         }
-        while (changeMoney >= NICKEL) {
-            changeMoney -= NICKEL;
+        while (moneyAvailable.compareTo(NICKEL) >= 0) {
+            moneyAvailable = moneyAvailable.subtract(NICKEL);
             nickelCoin++;
         }
 
