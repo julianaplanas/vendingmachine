@@ -3,6 +3,7 @@ package com.techelevator.UI;
 import com.techelevator.UI.constants.ColorCodes;
 import com.techelevator.model.Inventory;
 import com.techelevator.model.Product;
+import com.techelevator.model.SalesReport;
 
 import java.math.BigDecimal;
 
@@ -16,6 +17,9 @@ public class UserOutput {
     }
 
     public static void displayInventory(Inventory inventory) {
+
+        displayIntro("PURCHASABLE ITEMS");
+
         for(Product product : inventory.getProducts()) {
             System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + product.toString() + ColorCodes.RESET);
         }
@@ -41,7 +45,7 @@ public class UserOutput {
     public static void displayMoneyAvailable(BigDecimal price)
     {
         System.out.println(ColorCodes.GREEN);
-        System.out.println("Current money provided: $" + price);
+        System.out.println("Current Money Available: $" + price);
         System.out.println(ColorCodes.RESET);
     }
 
@@ -71,9 +75,26 @@ public class UserOutput {
         System.out.println();
         System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + "You have purchased a " + product + " for $" + price + "." + ColorCodes.RESET);
         System.out.println(ColorCodes.GREEN);
-        System.out.println("Current money provided: $" + moneyAvailable);
+        System.out.println("Current Money Available: $" + moneyAvailable);
         System.out.println(ColorCodes.RESET);
         System.out.println(message);
         System.out.println();
+
+        UserInput.getHomeScreenOption();
+    }
+
+    public static void displaySalesReport(SalesReport salesReport) {
+
+        displayIntro("SALES REPORT");
+
+        BigDecimal totalSpent = new BigDecimal(0);
+
+        for(Product product : salesReport.getNewReport()) {
+            int quantity = 5 - product.getQuantity();
+            String line = String.format("%-15s %-5f", product.getName(), quantity);
+            System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + line + ColorCodes.RESET);
+        }
+        System.out.println();
+        System.out.println("TOTAL SALES: $" + totalSpent);
     }
 }

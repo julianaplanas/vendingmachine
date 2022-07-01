@@ -2,38 +2,39 @@ package com.techelevator.application;
 
 import com.techelevator.UI.UserInput;
 import com.techelevator.UI.UserOutput;
-import com.techelevator.model.Audit;
-import com.techelevator.model.FeedMoney;
-import com.techelevator.model.Inventory;
-import com.techelevator.model.Purchase;
+import com.techelevator.model.*;
 
 public class VendingMachineApplication {
 
     private Inventory inventory = new Inventory();
+    private SalesReport salesReport = new SalesReport();
 
     public void run() {
 
         while(true) {
-            // todo: display home screen
-            // todo: and get user choice
             String userChoice = UserInput.getHomeScreenOption();
 
             if(userChoice.equalsIgnoreCase("display")) {
-                // todo: logic to display all vending machine items
+
                 showInventory();
 
             } else if(userChoice.equalsIgnoreCase("purchase")) {
-                // todo: logic to display purchase options
+
                 boolean isFinish = showPurchaseMenu();
                 if (isFinish) {
+                    SalesReport.reportSalesWriting();
                     break;
                 }
 
+            } else if(userChoice.equalsIgnoreCase("report")) {
+
+                UserOutput.displaySalesReport(salesReport);
+
             } else if(userChoice.equalsIgnoreCase("exit")) {
                 // break out of the loop and end the application
-
                 UserOutput.displayMessage("Thank you :) Come back soon!");
                 break;
+
             } else {
                 UserOutput.displayMessage("You selected an invalid option");
             }
@@ -66,7 +67,8 @@ public class VendingMachineApplication {
                 UserOutput.displayFinishedTransaction(FeedMoney.getChange());
                 return true;
 
-            } else {
+            }
+            else {
                 UserOutput.displayMessage("You selected an invalid option");
             }
         }

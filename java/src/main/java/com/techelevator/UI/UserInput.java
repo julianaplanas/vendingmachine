@@ -31,20 +31,19 @@ public class UserInput {
         System.out.println();
 
 
-        if(selectedOption.equals("1"))
-        {
+        if(selectedOption.equals("1")) {
             return "display";
         }
-        else if(selectedOption.equals("2"))
-        {
+        else if(selectedOption.equals("2")) {
             return "purchase";
         }
-        else if(selectedOption.equals("3"))
-        {
+        else if(selectedOption.equals("3")) {
             return "exit";
         }
-        else
-        {
+        else if (selectedOption.equals("4")) {
+            return "report";
+        }
+        else {
             return "";
         }
     }
@@ -63,7 +62,7 @@ public class UserInput {
         System.out.println("3) Finish Transaction ");
         System.out.println(ColorCodes.RESET);
 
-        System.out.println(ColorCodes.GREEN + "Current Money Provided: $" + FeedMoney.getMoneyAvailable());
+        System.out.println(ColorCodes.GREEN + "Current Money Available: $" + FeedMoney.getMoneyAvailable());
         System.out.println(ColorCodes.RESET);
 
         System.out.print("Please select an option: ");

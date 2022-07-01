@@ -19,7 +19,6 @@ public class Audit {
              PrintWriter writer = new PrintWriter(fileWriter)
         )
         {
-            LocalDateTime now = LocalDateTime.now();
 
             String message = String.format("%-20s %-15s $ %-7.2f $ %-7.2f", dateTransformer(), category, moneyBefore, moneyAfter);
 

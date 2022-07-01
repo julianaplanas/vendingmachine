@@ -36,6 +36,7 @@ public class Purchase {
             product.setQuantity(QUANTITY_TO_SUBTRACT);
             UserOutput.displayPurchaseMessage(product.getName(), product.getPrice(), FeedMoney.getMoneyAvailable(), product.getCategory());
             Audit.auditEntries(product.getName() + " " + product.getCode(), FeedMoney.getMoneyAvailable().add(product.getPrice()), FeedMoney.getMoneyAvailable());
+            SalesReport.reportSalesList(product);
 
         } else {
             UserOutput.displayMessage("You don't have enough money for this purchase.");
