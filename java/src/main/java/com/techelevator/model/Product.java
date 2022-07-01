@@ -52,7 +52,6 @@ public class Product {
         return "";
     }
 
-
     @Override
     public String toString()
     {

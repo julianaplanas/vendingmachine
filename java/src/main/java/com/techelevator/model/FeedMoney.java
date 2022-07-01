@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 public class FeedMoney {
 
     private static BigDecimal moneyAvailable = BigDecimal.ZERO;
-    private static BigDecimal change;
     private static final BigDecimal QUARTER = new BigDecimal("0.25");
     private static final BigDecimal DIME = new BigDecimal("0.10");
     private static final BigDecimal NICKEL = new BigDecimal("0.05");

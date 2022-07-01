@@ -11,7 +11,7 @@ public class Inventory {
         loadInventory();
     }
 
-    private void loadInventory() {
+    protected static void loadInventory() {
         FileProductLoader loader = new FileProductLoader();
         products = loader.getProducts();
     }
@@ -30,12 +30,6 @@ public class Inventory {
         }
         return product;
     }
-
-//    public Product changeQuantity(String productCode, int quantity) {
-//        Product product = getProductByCode(productCode);
-//        product.setQuantity(quantity);
-//        return;
-//    }
 
 
 }
