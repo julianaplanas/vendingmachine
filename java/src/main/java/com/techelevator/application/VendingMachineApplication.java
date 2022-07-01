@@ -2,6 +2,7 @@ package com.techelevator.application;
 
 import com.techelevator.UI.UserInput;
 import com.techelevator.UI.UserOutput;
+import com.techelevator.model.Audit;
 import com.techelevator.model.FeedMoney;
 import com.techelevator.model.Inventory;
 import com.techelevator.model.Purchase;

@@ -48,11 +48,10 @@ public class UserOutput {
 
     public static void displayFinishedTransaction(String change)
     {
-        System.out.println(ColorCodes.YELLOW_BACKGROUND);
-        System.out.println(ColorCodes.BLACK);
-        System.out.println("Thanks for your purchase!");
+        System.out.println();
+        System.out.println(ColorCodes.YELLOW_BACKGROUND + ColorCodes.BLACK + "Thanks for your purchase!" + ColorCodes.RESET);
         System.out.println(change);
-        System.out.println(ColorCodes.RESET);
+        System.out.println();
     }
 
 
@@ -70,7 +69,7 @@ public class UserOutput {
         }
 
         System.out.println();
-        System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.RED + "You have purchased a " + product + " for $" + price + "." + ColorCodes.RESET);
+        System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + "You have purchased a " + product + " for $" + price + "." + ColorCodes.RESET);
         System.out.println(ColorCodes.GREEN);
         System.out.println("Current money provided: $" + moneyAvailable);
         System.out.println(ColorCodes.RESET);

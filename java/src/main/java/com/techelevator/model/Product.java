@@ -58,7 +58,6 @@ public class Product {
     {
         String line = String.format("%-5s %-25s $ %-7.2f %-15s", code, name, price, quantityCheck());
         return line;
-        // return code + " - " + name + " - $" + price + quantityCheck();
     }
 
 

@@ -31,9 +31,12 @@ public class Purchase {
         double doubleAmountAvailable = amountAvailable.doubleValue();
 
         if (doubleAmountAvailable >= 0) {
+
             FeedMoney.setMoneyAvailable(product.getPrice(),true);
             product.setQuantity(QUANTITY_TO_SUBTRACT);
             UserOutput.displayPurchaseMessage(product.getName(), product.getPrice(), FeedMoney.getMoneyAvailable(), product.getCategory());
+            Audit.auditEntries(product.getName() + " " + product.getCode(), FeedMoney.getMoneyAvailable().add(product.getPrice()), FeedMoney.getMoneyAvailable());
+
         } else {
             UserOutput.displayMessage("You don't have enough money for this purchase.");
         }

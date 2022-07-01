@@ -18,6 +18,7 @@ public class FeedMoney {
     }
 
     public static String getChange() {
+        Audit.auditEntries("GIVE CHANGE:", getMoneyAvailable(), BigDecimal.valueOf(0.00));
         return "Your change is $" + moneyAvailable + " and you'll receive: \n" + coinChange();
     }
 
@@ -27,6 +28,7 @@ public class FeedMoney {
             moneyAvailable = moneyAvailable.subtract(amount);
         } else {
             moneyAvailable = moneyAvailable.add(amount);
+            Audit.auditEntries("FEED MONEY:", getMoneyAvailable().subtract(amount), getMoneyAvailable());
         }
     }
 
