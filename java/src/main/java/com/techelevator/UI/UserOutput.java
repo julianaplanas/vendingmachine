@@ -1,5 +1,6 @@
 package com.techelevator.UI;
 
+import com.techelevator.UI.constants.ColorCodes;
 import com.techelevator.model.Inventory;
 import com.techelevator.model.Product;
 
@@ -8,37 +9,50 @@ import java.math.BigDecimal;
 public class UserOutput {
 
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
+        final String ANSI_CLS = "\u001b[2J";
+        final String ANSI_HOME = "\u001b[H";
+        System.out.print(ANSI_CLS + ANSI_HOME);
         System.out.flush();
     }
 
     public static void displayInventory(Inventory inventory) {
         for(Product product : inventory.getProducts()) {
-            System.out.println(product.toString());
+            System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.BLACK + product.toString() + ColorCodes.RESET);
         }
+        System.out.println();
+    }
+
+    public static void displayIntro(String message)
+    {
+        System.out.println(ColorCodes.YELLOW);
+        System.out.println("---------------------------------");
+        System.out.println("        " + message);
+        System.out.println("---------------------------------");
+        System.out.println(ColorCodes.RESET);
     }
 
     public static void displayMessage(String message)
     {
-        System.out.println();
+        System.out.println(ColorCodes.RED);
         System.out.println(message);
-        System.out.println();
+        System.out.println(ColorCodes.RESET);
     }
 
     public static void displayMoneyAvailable(BigDecimal price)
     {
-        System.out.println();
+        System.out.println(ColorCodes.GREEN);
         System.out.println("Current money provided: $" + price);
-        System.out.println();
+        System.out.println(ColorCodes.RESET);
     }
 
 
     public static void displayFinishedTransaction(String change)
     {
-        System.out.println();
+        System.out.println(ColorCodes.YELLOW_BACKGROUND);
+        System.out.println(ColorCodes.BLACK);
         System.out.println("Thanks for your purchase!");
         System.out.println(change);
-        System.out.println();
+        System.out.println(ColorCodes.RESET);
     }
 
 
@@ -56,10 +70,10 @@ public class UserOutput {
         }
 
         System.out.println();
-        System.out.println("You have purchased a " + product + " for $" + price + ".");
-        System.out.println();
+        System.out.println(ColorCodes.WHITE_BACKGROUND + ColorCodes.RED + "You have purchased a " + product + " for $" + price + "." + ColorCodes.RESET);
+        System.out.println(ColorCodes.GREEN);
         System.out.println("Current money provided: $" + moneyAvailable);
-        System.out.println();
+        System.out.println(ColorCodes.RESET);
         System.out.println(message);
         System.out.println();
     }
